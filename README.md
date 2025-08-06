@@ -1,9 +1,11 @@
 # Svelte Keyboard shortcuts
 
+[**Demo.**](https://svelte-hotkeys.netlify.app/)
+
 Keyboard shortcuts are a great way to make using your application much quicker. It especially enables your power users to be super quick on common actions.
 Think of it as Vim for web applications.
 
-This svelte library makes adding shortcuts easy and also consolidates the display of shortcuts available.
+This svelte library makes adding shortcuts easy and also consolidates the display of shortcuts available. (Optional.)
 
 ## Get started
 
@@ -37,6 +39,10 @@ This svelte library makes adding shortcuts easy and also consolidates the displa
 	F to focus on me
 	<input use:shortcuts placeholder="Esc to blur." />
 </label>
+
+<div use:shortcuts={{ keys: ['z'], modifiers: [['Control', 'Shift'], ['Meta', 'Shift']] }}>
+	Press Ctrl+Shift+Z (or Meta+Shift+Z) to focus on me!
+</div>
 
 <a use:shortcuts={{ keys: ['a', 's', 'd'] }} href="/about">Ordered keys + links</a>
 

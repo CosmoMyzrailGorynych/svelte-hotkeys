@@ -49,7 +49,7 @@ This svelte library makes adding shortcuts easy and also consolidates the displa
 ```
 
 > [!NOTE]
-> Keys are handled based on their physical location on a standard QWERTY layout. (Basically, ) While this means that hotkeys will be the same no matter whether a user has English, German, Russian, or any other layout, but the hotkeys might be confusing for DVORAK and other less often used keyboard layouts.
+> Keys are handled based on their physical location on a standard QWERTY layout. While this means hotkeys will be the same no matter whether a user has English, German, Russian, or any other layout, the hotkeys might be confusing for DVORAK users and those that prefer other keyboard layouts.
 >
 > A good design choice would be communicating hotkeys with more than text: for example, with a keyboard illustration with keys and their actions highlighted.
 

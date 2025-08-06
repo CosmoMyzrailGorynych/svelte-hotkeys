@@ -7,8 +7,7 @@ This svelte library makes adding shortcuts easy and also consolidates the displa
 
 ## Get started
 
-layout.svelte
-
+`layout.svelte`
 ```svelte
 <script lang="ts">
 	import Shortcuts from '@whimsy-engine/svelte-hotkeys';
@@ -23,8 +22,7 @@ layout.svelte
 />
 ```
 
-page.svelte
-
+`page.svelte`
 ```svelte
 <script>
 	import { shortcuts } from '@whimsy-engine/svelte-hotkeys';
@@ -50,6 +48,37 @@ page.svelte
 </div>
 ```
 
+> [!NOTE]
+> Keys are handled based on their physical location on a standard QWERTY layout. (Basically, ) While this means that hotkeys will be the same no matter whether a user has English, German, Russian, or any other layout, but the hotkeys might be confusing for DVORAK and other less often used keyboard layouts.
+> A good design choice would be communicating which hotkeys do what with more than text: for example, with a keyboard illustration with keys and their actions highlighted.
+
+### Using key modifiers (like Ctrl+C)
+
+Modifiers are specified with the `modifiers` option and can be either an array of modifier names (`PressModifiers[]`), ***or*** an array of arrays of modifier keys (`PressModifiers[][]`).
+
+```svelte
+<!-- Using PressModifiers[] means that all PressModifiers must be pressed for the trigger to work. -->
+<div use:shortcuts={{ keys: ['g'], modifiers: ['Alt', 'Shift']] }}>
+	Press Alt+Shift+G to focus on me!
+</div>
+
+<!-- Here, using PressModifiers[][] means that any of PressModifiers[] can be used. For example, to create macOS-styled and regular hotkeys: -->
+<div use:shortcuts={{ keys: ['z'], modifiers: [['Control', 'Shift'], ['Meta', 'Shift']] }}>
+	Press Ctrl+Shift+Z (or Meta+Shift+Z) to focus on me!
+</div>
+```
+
+You can also set `modifiers` to `false` to explicitly forbid the use of modifier keys:
+
+```svelte
+<div use:shortcuts={{ keys: ['a'], modifiers: false }}>
+	Press just A to focus on me!
+</div>
+<div use:shortcuts={{ keys: ['d'] }}>
+	Pressing D with any modifier will focus me!
+</div>
+```
+
 ## Features
 
 Types of action
@@ -60,12 +89,7 @@ Types of action
 
 Based upon:
 
-- Single key press [x]
-- Multi key press [x]
-- Ordered key press [x]
-- Customizable Key presses[]
-
-Defaults behaviour by:
-
-- HTML element tag name (<input>, <button>, <a>)
-- HTML textValue or labels
+- Single key press
+- Multi key press
+- Ordered key press
+- Key Modifiers

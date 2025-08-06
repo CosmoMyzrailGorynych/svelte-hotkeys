@@ -11,7 +11,7 @@ layout.svelte
 
 ```svelte
 <script lang="ts">
-	import Shortcuts from 'svelte-keyboard-shortcuts';
+	import Shortcuts from '@whimsy-engine/svelte-hotkeys';
 </script>
 
 <Shortcuts
@@ -27,7 +27,7 @@ page.svelte
 
 ```svelte
 <script>
-	import { shortcuts } from 'svelte-keyboard-shortcuts';
+	import { shortcuts } from '@whimsy-engine/svelte-hotkeys';
 </script>
 
 <button class="btn rounded-full border border-gray-400 p-2" use:shortcuts onclick={handleOnClick}

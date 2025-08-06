@@ -1,5 +1,5 @@
 {
-	"name": "@whimsy-engine/svelte-keyboard-shortcuts",
+	"name": "@whimsy-engine/svelte-hotkeys",
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {

@@ -130,7 +130,7 @@ export const keyPressesState = $state<Array<AllKeys>>([]);
 export const resetKeyPressesState = () => {
 	keyPressesState.length = 0;
 };
-type params = {
+export type ShortcutParams = {
 	keys?: Array<AllKeys>;
 	modifiers?: false | Array<PressModifiers> | Array<Array<PressModifiers>>;
 	type?: 'auto' | 'callback' | 'click' | 'focus';
@@ -138,7 +138,7 @@ type params = {
 	options?: Options;
 };
 
-export const shortcuts: Action<HTMLElement, params | undefined> = (
+export const shortcuts: Action<HTMLElement, ShortcutParams | undefined> = (
 	node: HTMLElement,
 	{
 		type = 'auto',
@@ -146,7 +146,7 @@ export const shortcuts: Action<HTMLElement, params | undefined> = (
 		modifiers = void 0,
 		fn,
 		options: { generateKbd = defaultOptions.generateKbd } = {}
-	}: params | undefined = {}
+	}: ShortcutParams | undefined = {}
 ) => {
 	/* Attach a listener for keys when the node is attached.
 
@@ -268,7 +268,7 @@ function checkEquivModifiers(modifiers: PressModifiers[]): boolean {
 	}
 	return true;
 }
-function checkModifiers(modifiers: params['modifiers']): boolean {
+function checkModifiers(modifiers: ShortcutParams['modifiers']): boolean {
 	if (modifiers === void 0) return true;
 	// explicit `false` forbids the use of modifier keys
 	if (modifiers === false) {
@@ -312,7 +312,7 @@ const arrowsReplacements = {
 	ArrowUp: '↑',
 	ArrowDown: '↓'
 };
-function createKbd(keys: AllKeys[], modifiers: params['modifiers'], node: HTMLElement) {
+function createKbd(keys: AllKeys[], modifiers: ShortcutParams['modifiers'], node: HTMLElement) {
 	let lastKbd: HTMLElement;
 	if (keys) keys.forEach((key) => {
 		const kbd = document.createElement('kbd');

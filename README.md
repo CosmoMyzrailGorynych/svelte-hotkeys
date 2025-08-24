@@ -86,6 +86,36 @@ You can also set `modifiers` to `false` to explicitly forbid the use of modifier
 </div>
 ```
 
+> [!TIP]
+> The library also exports a `ShortcutParams` type that you can use, for example, to add a prop to a component that will then be used to make a shortcut inside that component. (The `use:` directive can't be used on components as it requires an explicit HTML tag to apply to.) This is very useful when you have generic components for interactive elements like `Button`, `ComboBox` and others:
+>
+> ```svelte
+> <!-- an oversimplified Button.svelte component -->
+> {#if shortcut}
+> 	<button use:shortcuts={shortcut}>
+> 		{label}
+> 	</button>
+> {:else}
+> 	<button>{label}</button>
+> {/if}
+>
+> <script lang="ts">
+> import { shortcuts, ShortcutParams } from '@whimsy-engine/svelte-hotkeys';
+>
+> let {
+> 	label,
+> 	shortcut
+> }: {
+> 	label: string,
+> 	shortcut?: ShortcutParams
+> } = $props();
+> </script>
+> ```
+> Then you can import this Button component and use it in your markup:
+> ```svelte
+> <Button shortcut={{keys: ['Space']}} label="Press spacebar!" />
+> ```
+
 ## Features
 
 Types of action

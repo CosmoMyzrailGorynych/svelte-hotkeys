@@ -100,7 +100,7 @@ You can also set `modifiers` to `false` to explicitly forbid the use of modifier
 > {/if}
 >
 > <script lang="ts">
-> import { shortcuts, ShortcutParams } from '@whimsy-engine/svelte-hotkeys';
+> import { shortcuts, type ShortcutParams } from '@whimsy-engine/svelte-hotkeys';
 >
 > let {
 > 	label,
